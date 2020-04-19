@@ -16,15 +16,16 @@ class Solution:
         return root
 
     def getHeight(self,root):
-        #Write your code here
-        if not root:
+        if root:
+            leftDepth = self.getHeight(root.left)
+            rightDepth = self.getHeight(root.right)
+            
+            if leftDepth > rightDepth:
+                return leftDepth + 1
+            else: 
+                return rightDepth + 1
+        else:
             return -1
-        if not root.left and not root.right:
-            return 0
-        left_Height = self.getHeight(root.left)
-        right_Height = self.getHeight(root.right)
-        return max(left_Height, right_Height) + 1
-
 T=int(input())
 myTree=Solution()
 root=None
